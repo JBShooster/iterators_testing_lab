@@ -125,21 +125,21 @@ end
   #keys
   describe "hash method - #keys" do
     it "should return array of symbols" do
-      expect(@hash.keys {|key, value| value.to_sym}).to eq([:a, :b])
+      expect(@hash.keys).to eq([:a, :b])
     end
   end
 
   #delete
   describe "hash method - #delete" do
     it "should return value of key that is deleted" do
-      expect(@hash.delete {|key| key == :a}).to eq(100)
+      expect(@hash.delete(:b)).to eq(200)
     end
   end
 
   #delete_if
   describe "hash method - #delete_if" do
     it "should delete key/value pair for any value equal to 100" do
-      expect(@hash.delete_if { |key, value| value % 2 == 0 and value % 4 == 0}).to eq({})
+      expect(@hash.delete_if{|key, value| value == 100 }).to eq({:b=>200})
     end
   end
 
